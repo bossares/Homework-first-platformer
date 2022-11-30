@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bat : MonoBehaviour
 {
     [SerializeField] private float _speed = 2.0f;
+
     private RandomPoint _randomPoint;
     private Vector3 _targetPoint;
     private float _minDistance = 0.1f;
