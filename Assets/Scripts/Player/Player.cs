@@ -40,17 +40,17 @@ public class Player : MonoBehaviour
 
     private void OnTakeDamage()
     {
-        _animator.SetTrigger("takeDamage");
+        _animator.SetTrigger(AnimatorPlayerController.Params.TakeDamage);
     }
 
     private void OnDie()
     {
-        _animator.SetBool("isDeath", true);
+        _animator.SetBool(AnimatorPlayerController.Params.IsDeath, true);
     }
 
     private void OnGrounded(bool value)
     {
         IsOnGround = value;
-        _animator.SetBool("isOnGround", value);
+        _animator.SetBool(AnimatorPlayerController.Params.IsOnGround, value);
     }
 }
