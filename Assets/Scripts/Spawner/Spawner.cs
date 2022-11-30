@@ -7,6 +7,7 @@ public class Spawner : ObjectPool
     [SerializeField] private Star _prefab;
     [SerializeField] private int _count = 5;
     [SerializeField] private float _delay = 2f;
+
     private RandomPoint _randomPoint;
 
     private void Start()

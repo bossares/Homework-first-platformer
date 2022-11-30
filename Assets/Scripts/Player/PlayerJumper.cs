@@ -9,12 +9,13 @@ public class PlayerJumper : MonoBehaviour
     [SerializeField] private float _minForce = 0.25f;
     [SerializeField] private float _maxForce = 15f;
     [SerializeField] private float _maxInputHoldTimeDuration = 0.8f;
-    private float _force;
+
     private Coroutine _increaseForceCoroutine;
     private PlayerInput _playerInput;
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
     private Player _player;
+    private float _force;
 
     private void Awake()
     {
@@ -57,8 +58,9 @@ public class PlayerJumper : MonoBehaviour
     {
         float maxInputHoldTimeDivider = 10;
         float delay = _maxInputHoldTimeDuration / maxInputHoldTimeDivider;
-        WaitForSeconds waitTime = new WaitForSeconds(delay);
         float increaseStep = (_maxForce - _minForce) / maxInputHoldTimeDivider;
+        
+        WaitForSeconds waitTime = new WaitForSeconds(delay);
 
         while (_force < _maxForce)
         {
@@ -71,7 +73,7 @@ public class PlayerJumper : MonoBehaviour
     {
         if (_player.IsOnGround && _player.Health.Value > 0)
         {
-            _animator.SetTrigger("jump");
+            _animator.SetTrigger(AnimatorPlayerController.Params.Jump);
             _rigidbody2D.AddForce(new Vector2(0, _force), ForceMode2D.Impulse);
         }
     }

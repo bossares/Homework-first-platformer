@@ -9,6 +9,7 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 20f;
     [SerializeField] private float _maxSpeed = 5f;
+
     private SpriteRenderer _spriteRenderer;
     private PlayerInput _playerInput;
     private Player _player;
@@ -59,6 +60,6 @@ public class PlayerMover : MonoBehaviour
         if (_player.IsOnGround && _absoluteSpeed < _maxSpeed)
             _rigidbody2D.AddForce(new Vector2(_direction * _speed * Time.deltaTime, 0), ForceMode2D.Impulse);
 
-        _animator.SetFloat("speed", _absoluteSpeed);
+        _animator.SetFloat(AnimatorPlayerController.Params.Speed, _absoluteSpeed);
     }
 }

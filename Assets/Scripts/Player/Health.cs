@@ -10,17 +10,14 @@ public class Health : MonoBehaviour
     public event UnityAction IsOver;
     public event UnityAction IsTakeDamage;
 
-    private void Update()
-    {
-        if (_health <= 0)
-            IsOver?.Invoke();
-    }
-
     public void TakeDamage(int damage)
     {
         IsTakeDamage?.Invoke();
 
         if (_health > 0)
             _health -= damage;
+
+        if (_health <= 0)
+            IsOver?.Invoke();
     }
 }
