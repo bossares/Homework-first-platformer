@@ -15,10 +15,10 @@ public class Bat : MonoBehaviour
         _targetPoint = _randomPoint.GetRandomPoint();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, _targetPoint) > _minDistance)
-            transform.position += _speed * (_targetPoint - transform.position).normalized * Time.deltaTime;
+            transform.Translate(_speed * (_targetPoint - transform.position).normalized * Time.deltaTime, Space.World);
         else
             _targetPoint = _randomPoint.GetRandomPoint();
     }

@@ -3,39 +3,39 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(CollectStars))]
+[RequireComponent(typeof(StarsCollector))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] Ground _ground;
+    [SerializeField] private Ground _ground;
 
     private Animator _animator;
     private Health _health;
-    private CollectStars _collectStars;
+    private StarsCollector _collectStars;
 
     public bool IsOnGround { get; private set; }
 
     public Health Health => _health;
-    public CollectStars Stars => _collectStars;
+    public StarsCollector Stars => _collectStars;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
-        _collectStars = GetComponent<CollectStars>();
+        _collectStars = GetComponent<StarsCollector>();
     }
 
     private void OnEnable()
     {
-        _health.IsOver += OnDie;
-        _health.IsTakeDamage += OnTakeDamage;
-        _ground.IsGrounded += OnGrounded;
+        _health.Ended += OnDie;
+        _health.Damaged += OnTakeDamage;
+        _ground.Grounded += OnGrounded;
     }
 
     private void OnDisable()
     {
-        _health.IsOver -= OnDie;
-        _health.IsTakeDamage -= OnTakeDamage;
-        _ground.IsGrounded -= OnGrounded;
+        _health.Ended -= OnDie;
+        _health.Damaged -= OnTakeDamage;
+        _ground.Grounded -= OnGrounded;
     }
 
     private void OnTakeDamage()
