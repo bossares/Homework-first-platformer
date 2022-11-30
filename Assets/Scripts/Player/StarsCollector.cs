@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectStars : MonoBehaviour
+public class StarsCollector : MonoBehaviour
 {
     public int Value { get; private set; }
 
