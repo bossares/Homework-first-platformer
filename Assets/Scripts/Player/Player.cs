@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(StarsCollector))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Ground _ground;
